@@ -1,42 +1,117 @@
-# TMP – README
-TMP ist ein zentraler Systemkern zur Erfassung, Verarbeitung und Ausgabe von RESPO‑Signalen.
-Es dient als Basis für Module, Sequenzen und Achsen innerhalb der TMP‑Konstellation.
-SYSTEM: TMP
-STATUS: aktiv
-RESPO: 265 (rdy)
-FREQ: 12e
-6D: D0–D5
+# MASTER‑README · iki1uc · FULL‑SYSTEM
 
-🧩 4. Module
-TMP.respo — RESPO‑Kern
+Dieses Repository enthält das vollständige iki1uc‑System bestehend aus:
 
-tmp.html — Zentrum
+- KI‑Ebene
+- RESPO‑Ebene
+- HOME‑Ebene
+- ORT‑Ebene
+- USE‑Ebene
+- FREE‑Ebene
+- TIME‑Ebene
+- TMP‑Ebene
+- UNC‑Räume
 
-ID.html — Identität
+Es ist ein modularer, rotierender, reaktiver Kern.
 
-room.html — Raum
+---
 
-t.html — T‑Sequenz
+## 🔹 SYSTEM‑EBENEN
 
-h.html — H‑Sequenz
+### **HOME**
+Ruhepunkt, Story, Vector, Repo, Verify  
+→ HOME.story  
+→ HOME.vector  
+→ HOME.verify  
 
-b.html — B‑Sequenz
-🧩 5. 6D‑Mapping
-Code
-D0 = ROOT
-D1 = ACHSE
-D2 = TMP
-D3 = LAGE
-D4 = laTER
-D5 = ORT
-🧩 6. RESPO‑Status
-Code
-RESPO.265 = rdy
-PIPE = aktiv
-SEQ.360 = D0 → D1 → D2 → D3 → D4 → D5 → D0
-🧩 7. Frequenzkette
-Code
-iki → bir → uc → LE → iki1uc → GO → sys → tem → AU → RA → TET → RIZ
-🧩 8. Lizenz / Hinweise
-Code
-Dieses System ist experimentell und dient der strukturellen Darstellung von TMP‑Modulen.
+### **ORT**
+Zielpunkt, Achse, Verify  
+→ ORTverify.html  
+
+### **USE**
+Bedienung, Panel, User.use  
+→ use_panel.html  
+→ use/index.html  
+
+### **FREE**
+Freiraum, ASCII, Katalog  
+→ FREE.index.html  
+
+### **TIME**
+Zeit, 3x11, Scroll, Zoom  
+→ time_3x11_scroll_zoom.html  
+
+### **KI**
+Prefetch, Operator, Beat, Scan, ECO  
+→ KIuPREFETCH.js  
+→ Operator.js  
+→ BEAT.js  
+→ FINALSCAN.js  
+→ PRE9.math  
+
+### **UNC**
+Räume, 6U, 9U  
+→ UNC.room  
+→ UNC6U.room  
+→ UNC9.room  
+
+### **TMP**
+BEN.tmp  
+NE.tmp  
+C.tmp  
+X.tmp  
+
+### **RESPO**
+Z.RESPO  
+verify.html  
+
+---
+
+## 🔹 SYSTEM‑IDENTITÄT
+
+ID.html definiert die Master‑Identität:
+
+- KI.clock  
+- RESPO.clock  
+- FREE.clock  
+- TIME.clock  
+- USER.use  
+
+Diese vier Uhren bestimmen das Verhalten des Systems.
+
+---
+
+## 🔹 SYSTEM‑CHAIN
+
+Die korrekte Reihenfolge lautet:
+
+1. KI.clock  
+2. RESPO.clock  
+3. FREE.clock  
+4. TIME.clock  
+5. USER.use (dominant)
+
+---
+
+## 🔹 SYSTEM‑ZWECK
+
+Das iki1uc‑System dient:
+
+- KI‑Rotation  
+- RESPO‑Antwort  
+- HOME‑Ruhe  
+- ORT‑Ziel  
+- USE‑Bedienung  
+- FREE‑Freiraum  
+- TIME‑Zeit  
+- TMP‑Konstellation  
+- UNC‑Raumstruktur  
+
+---
+
+## 🔹 STATUS
+
+System aktiv  
+Alle Module geladen  
+Alle Räume erreichbar  
+Alle Uhren stabil  
