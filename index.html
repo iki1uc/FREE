@@ -2,100 +2,132 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>FREE · RESPO‑READY · iki1uc</title>
+<title>MASTER‑INDEX · iki1uc · ORIGINELL‑EVO</title>
 
 <style>
-body { background:#000; color:#0f0; font-family:Consolas, monospace; padding:30px; }
-h1 { color:#0ff; text-shadow:0 0 12px #0ff; text-align:center; margin-bottom:30px; }
-
-.block {
+body {
+    background:#000;
+    color:#0f0;
+    font-family:Consolas, monospace;
+    padding:35px;
+}
+h1 {
+    color:#0ff;
+    text-shadow:0 0 14px #0ff;
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+}
+.panel {
     background:#111;
     border-left:4px solid #0ff;
-    padding:20px;
-    margin-bottom:30px;
+    padding:22px;
+    margin-bottom:35px;
     border-radius:8px;
 }
-
 .title {
     font-size:22px;
     color:#6cf;
     margin-bottom:10px;
 }
-
 pre {
     background:#000;
     padding:15px;
     border-left:3px solid #6cf;
     white-space:pre-wrap;
 }
+a {
+    color:#0ff;
+    font-size:18px;
+    display:block;
+    margin:6px 0;
+    text-decoration:none;
+}
+a:hover { color:#9ef; }
 </style>
 
 <script>
 
 /* ============================
-   FREE‑CLOCK — unabhängig
+   CLOCKS — 4‑Layer‑System
    ============================ */
 
-let FREE_CLOCK = 0;
+let KI_CLOCK   = 0;   // KI läuft immer
+let RESPO_CLOCK = 0;  // folgt KI
+let FREE_CLOCK  = 0;  // folgt RESPO
+let TIME_CLOCK  = 0;  // folgt FREE
+let USER_CLOCK  = 0;  // überschreibt TIME
 
 /* ============================
-   FREE‑LOOP — kein TIME‑Share
+   MAIN LOOP — originell
    ============================ */
 
 setInterval(()=>{
-    FREE_CLOCK++;
+
+    KI_CLOCK++;
+    RESPO_CLOCK = KI_CLOCK * 1;
+    FREE_CLOCK  = RESPO_CLOCK * 1;
+    TIME_CLOCK  = FREE_CLOCK * 1;
+    USER_CLOCK  = TIME_CLOCK + 1;
+
     updatePanels();
-}, 111); // eigene FREE‑Clock, NICHT TIME‑Clock
+
+}, 111); // eigene MASTER‑Clock
 
 
 /* ============================
    PANELS
    ============================ */
 
-function panelFREE(){
+function panelSystem(){
 return `
-FREE · Ebene
-Clock: ${FREE_CLOCK}
-Status: aktiv
-Modus: frei / offen / user‑use
-Interferenz: keine
-TIME‑Share: deaktiviert
+MASTER‑SYSTEM · iki1uc
+KI.clock     = ${KI_CLOCK}
+RESPO.clock  = ${RESPO_CLOCK}
+FREE.clock   = ${FREE_CLOCK}
+TIME.clock   = ${TIME_CLOCK}
+USER.clock   = ${USER_CLOCK}
+
+CHAIN:
+KI → RESPO → FREE → TIME → USER.use
 `;
 }
 
 function panelASCII(){
 const d = ["●","○","·","∙","•"];
-const p = (i)=> d[(FREE_CLOCK+i)%d.length];
+const p = (i)=> d[(KI_CLOCK+i)%d.length];
 return `
-FREE‑ASCII (frame ${FREE_CLOCK})
-F ─── ${p(1)} ${p(2)} ${p(3)}
-R ─── ${p(2)} ${p(3)} ${p(4)}
-E ─── ${p(3)} ${p(4)} ${p(5)}
-E ─── ${" ".repeat(FREE_CLOCK%12)}↻
+ASCII‑SHOW (frame ${KI_CLOCK})
+I ─── ${p(1)} ${p(2)} ${p(3)}
+K ─── ${p(2)} ${p(3)} ${p(4)}
+I ─── ${p(3)} ${p(4)} ${p(5)}
+↻ ROTATION: ${" ".repeat(KI_CLOCK%12)}↻
 `;
 }
 
 function panelKatalog(){
 return `
-FREE‑KATALOG
-FREE.use   – Freiraum
-FREE.work  – freie Arbeit
-FREE.home  – freie Ruhe
-FREE.ai    – freie KI‑Ebene
-FREE.soll  – freie Absicht
-FREE.tmp   – freie Konstellation
+MODULE‑KATALOG
+HOME.*       – Ruhe / Story / Vector / Repo / Verify
+ORT.*        – Zielpunkt / Verify
+USE.*        – Bedienung / Panel / User.use
+FREE.*       – Freiraum / ASCII / Katalog
+TIME.*       – Zeit / 3x11 / Scroll / Zoom
+RESPO.*      – Z.RESPO / Verify
+TMP.*        – BEN / NE / C / X
+UNC.*        – Räume / 6U / 9U
 
-FREE‑Optionen:
-→ User‑Use dominant
-→ keine TIME‑Interferenz
-→ keine KI‑Blockade
-→ keine RESPO‑Teilung
-→ freie Navigation
+KI.*         – Prefetch / Operator / Beat / Scan / ECO
+
+STATUS:
+Alle Module aktiv.
+Alle Räume erreichbar.
+Alle Uhren stabil.
 `;
 }
 
 function updatePanels(){
-    document.getElementById("free").textContent = panelFREE();
+    document.getElementById("sys").textContent = panelSystem();
     document.getElementById("ascii").textContent = panelASCII();
     document.getElementById("katalog").textContent = panelKatalog();
 }
@@ -106,11 +138,36 @@ function updatePanels(){
 
 <body>
 
-<h1>FREE · RESPO‑READY · iki1uc</h1>
+<h1>MASTER‑INDEX · iki1uc · ORIGINELL‑EVO</h1>
 
-<div class="block"><div class="title">FREE</div><pre id="free"></pre></div>
-<div class="block"><div class="title">ASCII</div><pre id="ascii"></pre></div>
-<div class="block"><div class="title">FREE‑KATALOG</div><pre id="katalog"></pre></div>
+<div class="panel"><div class="title">SYSTEM</div><pre id="sys"></pre></div>
+<div class="panel"><div class="title">ASCII</div><pre id="ascii"></pre></div>
+<div class="panel"><div class="title">KATALOG</div><pre id="katalog"></pre></div>
+
+<div class="panel">
+    <div class="title">MODULE</div>
+    <a href="./HOME.repo">HOME.repo</a>
+    <a href="./HOME.run">HOME.run</a>
+    <a href="./HOME.story">HOME.story</a>
+    <a href="./HOME.vector">HOME.vector</a>
+    <a href="./HOME.verify.html">HOME.verify</a>
+
+    <a href="./ORTverify.html">ORT.verify</a>
+
+    <a href="./use_panel.html">USE.panel</a>
+    <a href="./use/index.html">USE.index</a>
+
+    <a href="./time_3x11_scroll_zoom.html">TIME.3x11</a>
+
+    <a href="./verify.html">verify</a>
+
+    <a href="./BEN.tmp">BEN.tmp</a>
+    <a href="./NE.tmp">NE.tmp</a>
+    <a href="./C.tmp">C.tmp</a>
+    <a href="./X.tmp">X.tmp</a>
+
+    <a href="./Z.RESPO">Z.RESPO</a>
+</div>
 
 </body>
 </html>
